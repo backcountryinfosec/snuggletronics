@@ -92,8 +92,7 @@ Viewed through browser
 
 ## Docker
 Dockerfile included will build basic container. To run please use the following command:
-    # Example
-    $ docker run --rm -p 5000:5000 --cap-add SYS_RAWIO --device /dev/mem -d snuggleme
+    `docker run --rm -p 5000:5000 --cap-add SYS_RAWIO --device /dev/mem -d snuggleme`
 
 ## The API
 
