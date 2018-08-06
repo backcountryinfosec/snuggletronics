@@ -1,7 +1,7 @@
 import pickle
 import time
 import os
-import wiringpi2
+import wiringpi
 import threading
 import json
 
@@ -87,8 +87,8 @@ class HeatedMattress:
     #     [[1,1],[0,1],[1,1],[0,1],[1,1],[0,1],[1,1],[0,1],[1,1],[0,1],[1,1],[0,1],[1,1],[0,1],[1,1],[0,1],[1,1],[0,1],[1,1],[0,1],[1,1],[0,1]]
     # ]
 
-    wiringpi2.wiringPiSetup() # For sequential pin numbering, one of these MUST be called before using IO functions
-    wiringpi2.pinMode(0,1)  # Setup pin 11 (GPIO1)
+    wiringpi.wiringPiSetup() # For sequential pin numbering, one of these MUST be called before using IO functions
+    wiringpi.pinMode(0,1)  # Setup pin 11 (GPIO1)
 
     final_send_sleep_micros = 650 * 100  # used to insure adequate sleep between back to back sends
 
@@ -213,11 +213,11 @@ class HeatedMattress:
             # on a dedicated device.
             for pulse_pair in pulse_data:
                 if pulse_pair[0] == 0:
-                    wiringpi2.digitalWrite(0,0)  # Turn off
+                    wiringpi.digitalWrite(0,0)  # Turn off
                 else:
-                    wiringpi2.digitalWrite(0,1)  # Turn on
+                    wiringpi.digitalWrite(0,1)  # Turn on
                 self.usleep(pulse_pair[1])
 
-            wiringpi2.digitalWrite(0,0)  # Turn off
+            wiringpi.digitalWrite(0,0)  # Turn off
             self.usleep(self.final_send_sleep_micros)  # sleep
 
